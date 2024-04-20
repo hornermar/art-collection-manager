@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CollectionListContext } from "./CollectionListContext";
+import { UserContext } from "./UserContext";
 
 type LoadObject = {
     state: "ready" | "pending" | "error";
@@ -20,18 +21,25 @@ export function CollectionListProvider({
             data: null,
         });
 
+    const { loggedInUser } = useContext(UserContext);
+
     useEffect(() => {
         handleLoad();
-    }, []);
+    }, [loggedInUser]);
 
     async function handleLoad() {
         setCollectionLoadObject((current) => ({
             ...current,
             state: "pending",
         }));
-        const response = await fetch(`http://localhost:8000/collection/list`, {
-            method: "GET",
-        });
+        const response = await fetch(
+            `http://localhost:8000/collection/list?userId=${
+                loggedInUser?.id || ""
+            }`,
+            {
+                method: "GET",
+            }
+        );
         const responseJson = await response.json();
         if (response.status < 400) {
             setCollectionLoadObject({ state: "ready", data: responseJson });
@@ -55,9 +63,7 @@ export function CollectionListProvider({
             `http://localhost:8000/collection/create`,
             {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(dtoIn),
             }
         );
@@ -102,6 +108,36 @@ export function CollectionListProvider({
 
         if (response.status < 400) {
             setCollectionLoadObject((current) => {
+                return { state: "ready", data: current.data };
+            });
+            return responseJson;
+        } else {
+            setCollectionLoadObject((current) => ({
+                state: "error",
+                data: current.data,
+                error: responseJson,
+            }));
+            throw new Error(JSON.stringify(responseJson, null, 2));
+        }
+    }
+
+    async function handleRemove(dtoIn: any) {
+        setCollectionLoadObject((current) => ({
+            ...current,
+            state: "pending",
+        }));
+        const response = await fetch(
+            `http://localhost:8000/collection/delete`,
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(dtoIn),
+            }
+        );
+        const responseJson = await response.json();
+
+        if (response.status < 400) {
+            setCollectionLoadObject((current) => {
                 const collectionIndex = current.data.findIndex(
                     (e: any) => e.id === responseJson.id
                 );
@@ -123,34 +159,14 @@ export function CollectionListProvider({
         }
     }
 
-    async function handleArtwork(dtoIn: any) {
-        setCollectionLoadObject((current) => ({
-            ...current,
-            state: "pending",
-        }));
-        const response = await fetch(`http://localhost:8000/artwork/update`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(dtoIn),
-        });
-        const responseJson = await response.json();
-
-        if (response.status < 400) {
-            await handleLoad();
-        } else {
-            setCollectionLoadObject((current) => ({
-                state: "error",
-                data: current.data,
-                error: responseJson,
-            }));
-            throw new Error(JSON.stringify(responseJson, null, 2));
-        }
-    }
-
     const value = {
         state: collectionLoadObject.state,
         collectionList: collectionLoadObject.data || [],
-        handlerMap: { handleCreate, handleUpdate, handleArtwork },
+        handlerMap: {
+            handleCreate,
+            handleUpdate,
+            handleRemove,
+        },
     };
 
     return (

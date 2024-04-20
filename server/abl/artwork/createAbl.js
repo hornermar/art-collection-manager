@@ -9,10 +9,19 @@ const schema = {
     type: "object",
     properties: {
         collectionId: { type: "string", minLength: 32, maxLength: 32 },
+        inventoryNumber: { type: "number" },
+        incrementalNumber: { type: "string" },
         author: { type: "string" },
-        name: { type: "string", minLength: 3 },
+        title: { type: "string", minLength: 3 },
+        date: { type: "string" },
+        medium: { type: "string" },
+        dimensions: { type: "string" },
+        description: { type: "string" },
+        acquisitionDate: { type: "string" },
+        acquisitionType: { type: "string" },
+        location: { type: "string" },
     },
-    required: ["collectionId", "author", "name"],
+    required: ["collectionId", "author", "title"],
     additionalProperties: false,
 };
 

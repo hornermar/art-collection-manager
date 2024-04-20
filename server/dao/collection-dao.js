@@ -29,7 +29,7 @@ function create(collection) {
         );
         const fileData = JSON.stringify(collection);
         fs.writeFileSync(filePath, fileData, "utf8");
-        return collection;
+        return { ...collection };
     } catch (error) {
         throw { code: "failedToCreateCollection", message: error.message };
     }
@@ -69,7 +69,7 @@ function remove(collectionId) {
 }
 
 // Method to list collections in a folder
-function list() {
+function list(ownerId) {
     try {
         const files = fs.readdirSync(collectionFolderPath);
         const collectionList = files.map((file) => {
@@ -79,8 +79,18 @@ function list() {
             );
             return JSON.parse(fileData);
         });
-        collectionList.sort((a, b) => new Date(a.date) - new Date(b.date));
-        return collectionList;
+
+        const filteredCollectionList = collectionList.filter(
+            (collection) => collection.ownerId === ownerId
+        );
+
+        filteredCollectionList.sort(
+            (a, b) => new Date(a.date) - new Date(b.date)
+        );
+
+        return filteredCollectionList.filter(
+            (collection) => collection.ownerId === ownerId
+        );
     } catch (error) {
         throw { code: "failedToListCollections", message: error.message };
     }

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CollectionContext } from "../context/CollectionContext";
+import { CollectionListContext } from "../context/CollectionListContext";
 
 export function Collection() {
     const navigate = useNavigate();
@@ -18,6 +19,8 @@ export function Collection() {
                         <h3>{collection.name}</h3>
                         <p>{collection.desc}</p>
                         <p>{collection.id}</p>
+
+                        <hr />
 
                         <div>
                             {collection?.artworkMap &&

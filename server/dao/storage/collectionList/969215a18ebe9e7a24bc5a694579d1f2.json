@@ -1,1 +1,6 @@
-{"name":"Malba","desc":"Sbírka malby 20. století","id":"969215a18ebe9e7a24bc5a694579d1f2"}
+{
+    "name": "Malba",
+    "desc": "updated desc",
+    "id": "969215a18ebe9e7a24bc5a694579d1f2",
+    "ownerId": "062657adaf82d479dcae572c1f3ebd45"
+}

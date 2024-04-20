@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useSearchParams, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { CollectionContext } from "./CollectionContext";
 
 type LoadObject = {

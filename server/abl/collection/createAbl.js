@@ -10,12 +10,18 @@ const schema = {
     properties: {
         name: { type: "string", minLength: 3 },
         desc: { type: "string" },
+        ownerId: {
+            type: "string",
+            minLength: 32,
+            maxLength: 32,
+        },
     },
-    required: ["name"],
+    required: ["name", "ownerId"],
     additionalProperties: false,
 };
 
 async function CreateAbl(req, res) {
+    // TODO: if ownerId is not includes in user table, return 400
     try {
         let collection = req.body;
 
