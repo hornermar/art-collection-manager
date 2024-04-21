@@ -32,10 +32,10 @@ async function ListAbl(req, res) {
         }
 
         const collectionList = collectionDao.list(reqParams.userId);
-        const artworkMap = artworkDao.collectionMap();
+        const artworkList = artworkDao.collectionMap();
 
         collectionList.forEach((collection) => {
-            collection.artworkMap = artworkMap[collection.id] || {};
+            collection.artworkList = artworkList[collection.id] || {};
         });
 
         res.json(collectionList);

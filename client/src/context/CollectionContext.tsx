@@ -4,7 +4,7 @@ type Collection = {
     id: string;
     name: string;
     desc: string;
-    artworkMap: any[];
+    artworkList: any[];
 };
 
 export const CollectionContext = createContext({

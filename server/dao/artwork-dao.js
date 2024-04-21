@@ -75,21 +75,25 @@ function list() {
 }
 
 function collectionMap() {
-    const artworkList = list();
+    const artworks = list();
 
-    const artworkMap = {};
-    artworkList.forEach((artwork) => {
-        if (!artworkMap[artwork.collectionId])
-            artworkMap[artwork.collectionId] = {};
+    const artworkList = {};
+    artworks.forEach((artwork) => {
+        if (!artworkList[artwork.collectionId])
+            artworkList[artwork.collectionId] = {};
 
-        const { name, author } = artwork;
+        const { name, author, date, inventoryNumber, incrementalNumber } =
+            artwork;
 
-        artworkMap[artwork.collectionId][artwork.id] = {
+        artworkList[artwork.collectionId][artwork.id] = {
             name,
             author,
+            date,
+            inventoryNumber,
+            incrementalNumber,
         };
     });
-    return artworkMap;
+    return artworkList;
 }
 
 module.exports = {

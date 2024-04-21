@@ -15,6 +15,7 @@ const schema = {
     additionalProperties: false,
 };
 
+// loadCollection
 async function GetAbl(req, res) {
     try {
         // get request query or body
@@ -41,8 +42,8 @@ async function GetAbl(req, res) {
             return;
         }
 
-        const artworkMap = artworkDao.collectionMap();
-        collection.artworkMap = artworkMap[reqParams.id] || {};
+        const artworkList = artworkDao.collectionMap();
+        collection.artworkList = artworkList[reqParams.id] || {};
 
         res.json(collection);
     } catch (e) {

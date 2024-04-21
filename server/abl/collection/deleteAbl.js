@@ -29,8 +29,8 @@ async function DeleteAbl(req, res) {
             return;
         }
 
-        const artworkMap = artworkDao.collectionMap();
-        if (artworkMap[reqParams.id]) {
+        const artworkList = artworkDao.collectionMap();
+        if (artworkList[reqParams.id]) {
             res.status(400).json({
                 code: "collectionHasArtworks",
                 message: `Collection ${reqParams.id} has artworks`,

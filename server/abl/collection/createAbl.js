@@ -4,6 +4,7 @@ const ajv = new Ajv();
 addFormats(ajv);
 
 const collectionDao = require("../../dao/collection-dao.js");
+const userDao = require("../../dao/user-dao.js");
 
 const schema = {
     type: "object",
@@ -32,6 +33,16 @@ async function CreateAbl(req, res) {
                 code: "dtoInIsNotValid",
                 message: "dtoIn is not valid",
                 validationError: ajv.errors,
+            });
+            return;
+        }
+
+        // validate ownerId
+        const user = userDao.get(collection.ownerId);
+        if (!user) {
+            res.status(400).json({
+                code: "ownerIdNotFound",
+                message: `User ${collection.ownerId} not found`,
             });
             return;
         }
