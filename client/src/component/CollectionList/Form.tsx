@@ -3,19 +3,12 @@ import { Formik, Form } from "formik";
 import { TextFieldForm } from "../TextFieldForm";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import { Collection } from "../../context/CollectionContext";
-
-type Values = {
-    name: string;
-    description: string;
-    ownerId: string | null;
-    id: string | null;
-};
+import { CollectionType } from "../../context/CollectionContext";
 
 type CollectionListFormProps = {
     onClose: () => void;
-    onSubmit: (values: Values) => void;
-    collection?: Collection;
+    onSubmit: (values: CollectionType) => void;
+    collection?: CollectionType;
 };
 
 export const CollectionListForm = ({
@@ -25,31 +18,41 @@ export const CollectionListForm = ({
 }: CollectionListFormProps) => {
     const { loggedInUser } = useContext(UserContext);
 
-    const handleSubmit = (values: Values) => {
-        onSubmit(values);
+    const handleSubmit = (values: CollectionType) => {
+        const notEmptyValues = Object.fromEntries(
+            Object.entries(values).filter(([key, value]) => value)
+        );
+        onSubmit(notEmptyValues as CollectionType);
         onClose();
     };
+
     return (
         <>
             <Formik
                 initialValues={{
                     name: collection?.name || "",
                     description: collection?.description || "",
-                    ownerId: collection?.id ? loggedInUser?.id : "",
-                    id: collection?.id || "",
+                    ownerId: loggedInUser.id,
+                    id: collection?.id || undefined,
                 }}
-                onSubmit={(values: Values) => {
+                onSubmit={(values: CollectionType) => {
                     handleSubmit(values);
                 }}
             >
                 <Form>
-                    <TextFieldForm name="name" label="Name" type="text" />
+                    <TextFieldForm
+                        name="name"
+                        label="Name"
+                        type="text"
+                        fullWidth
+                    />
                     <TextFieldForm
                         name="description"
                         label="Dame"
                         type="text"
                         multiline
                         rows={4}
+                        fullWidth
                     />
 
                     <Button variant="contained" type="submit">

@@ -1,5 +1,8 @@
 import { useContext } from "react";
 import { ArtworkContext } from "../context/ArtworkContext";
+import { ArtworkForm } from "./Artwork/Form";
+
+import { NavigationButton } from "./NavigationButton";
 
 export function Artwork() {
     const { artwork } = useContext(ArtworkContext);
@@ -8,10 +11,12 @@ export function Artwork() {
         <div>
             {artwork ? (
                 <>
-                    <div>
-                        <h3>{artwork.name}</h3>
-                        <p>{artwork.author}</p>
-                    </div>
+                    <NavigationButton
+                        to={"/collection?id=" + artwork.collectionId}
+                        title="Collection"
+                    />
+
+                    <ArtworkForm artwork={artwork} />
                 </>
             ) : (
                 "loading..."

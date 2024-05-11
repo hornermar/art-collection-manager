@@ -57,7 +57,7 @@ function remove(artworkId) {
 }
 
 // Method to list artworks in a folder
-function list() {
+function list(collectionId) {
     try {
         const files = fs.readdirSync(artworkFolderPath);
         const artworkList = files.map((file) => {
@@ -67,8 +67,15 @@ function list() {
             );
             return JSON.parse(fileData);
         });
-        artworkList.sort((a, b) => new Date(a.date) - new Date(b.date));
-        return artworkList;
+
+        const filteredArtworkList = collectionId
+            ? artworkList.filter(
+                  (artwork) => artwork.collectionId === collectionId
+              )
+            : artworkList;
+
+        filteredArtworkList.sort((a, b) => new Date(a.date) - new Date(b.date));
+        return filteredArtworkList;
     } catch (error) {
         throw { code: "failedToListArtworks", message: error.message };
     }

@@ -2,10 +2,9 @@ import React, { useContext } from "react";
 import { CollectionListContext } from "../../context/CollectionListContext";
 import { useNavigate } from "react-router-dom";
 import { useSwitch } from "../../hooks/useSwitch";
-import { Dialog, DialogTitle, DialogContent, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { Card } from "../Card";
-import { CollectionListForm } from "./Form";
 import { Title } from "../Title";
 import { CollectionDialog } from "./Dialog";
 

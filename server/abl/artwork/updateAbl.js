@@ -12,7 +12,7 @@ const schema = {
         inventoryNumber: { type: "number" },
         incrementalNumber: { type: "string" },
         author: { type: "string" },
-        title: { type: "string", minLength: 3 },
+        title: { type: "string" },
         date: { type: "string" },
         medium: { type: "string" },
         dimensions: { type: "string" },

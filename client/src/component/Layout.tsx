@@ -7,7 +7,7 @@ export function Layout() {
         <Stack sx={{ minHeight: "100vh" }} flexDirection="column">
             <NavBar />
 
-            <Container sx={{ flexGrow: 1, marginTop: "50px" }}>
+            <Container sx={{ flexGrow: 1, marginTop: "30px" }}>
                 <Outlet />
             </Container>
 

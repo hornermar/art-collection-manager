@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { SxProps, TextField } from "@mui/material";
 import { useField } from "formik";
 
 type TextFieldFormProps = {
@@ -7,12 +7,17 @@ type TextFieldFormProps = {
     type?: string;
     multiline?: boolean;
     rows?: number;
+    disabled?: boolean;
+    fullWidth?: boolean;
+    sx?: SxProps;
 };
 
 export const TextFieldForm = ({
     label,
     multiline,
     rows,
+    fullWidth,
+    sx,
     ...props
 }: TextFieldFormProps) => {
     const [field, meta, helpers] = useField(props);
@@ -25,8 +30,8 @@ export const TextFieldForm = ({
             variant="outlined"
             multiline={multiline}
             rows={rows}
-            fullWidth
-            sx={{ marginBottom: 2 }}
+            fullWidth={fullWidth}
+            sx={{ marginBottom: 2, ...sx }}
         />
     );
 };

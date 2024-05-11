@@ -13,7 +13,7 @@ const schema = {
         description: { type: "string" },
     },
     required: ["id"],
-    additionalProperties: false,
+    additionalProperties: true,
 };
 
 async function UpdateAbl(req, res) {

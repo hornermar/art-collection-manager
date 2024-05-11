@@ -1,12 +1,12 @@
 import { Dialog, DialogTitle, DialogContent } from "@mui/material";
 import { CollectionListForm } from "./Form";
-import { Collection } from "../../context/CollectionContext";
+import { CollectionType } from "../../context/CollectionContext";
 
 type CollectionDialogProps = {
     onClose: () => void;
     open: boolean;
     onSubmit: (dtoIn: any) => void;
-    collection?: Collection;
+    collection?: CollectionType;
 };
 
 type Values = {

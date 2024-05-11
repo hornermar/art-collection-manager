@@ -21,7 +21,7 @@ const schema = {
         acquisitionType: { type: "string" },
         location: { type: "string" },
     },
-    required: ["collectionId", "author", "title"],
+    required: ["collectionId"],
     additionalProperties: false,
 };
 
@@ -41,7 +41,34 @@ async function CreateAbl(req, res) {
             return;
         }
 
-        artwork = artworkDao.create(artwork);
+        const artworkList = artworkDao.list(artwork.collectionId);
+
+        const inventoryNumber =
+            Math.max(
+                ...artworkList
+                    .map((artwork) => artwork.inventoryNumber)
+                    .filter(Number)
+            ) + 1;
+
+        const incrementalNumbers = artworkList.map(
+            (artwork) => artwork.incrementalNumber
+        );
+
+        const currentYear = new Date().getFullYear();
+        const currentYearNumbers = incrementalNumbers
+            .filter((num) => num.endsWith(`/${currentYear}`))
+            .map((num) => +num.split("/")[0]);
+
+        const maxNumber = Math.max(...currentYearNumbers, 0);
+
+        const incrementalNumber = `${maxNumber + 1}/${currentYear}`;
+
+        artwork = artworkDao.create({
+            ...artwork,
+            inventoryNumber,
+            incrementalNumber,
+        });
+
         res.json(artwork);
     } catch (e) {
         res.status(500).json({ message: e.message });

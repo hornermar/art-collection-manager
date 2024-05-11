@@ -1,12 +1,14 @@
 import { createContext } from "react";
+import { ArtworkType } from "./ArtworkContext";
 
-export type Collection = {
-    id: string;
+export type CollectionType = {
+    id?: string;
     name: string;
     description: string;
-    artworkList: any[];
+    ownerId: string | null;
+    artworkList?: ArtworkType[];
 };
 
 export const CollectionContext = createContext({
-    collection: null as Collection | null,
+    collection: null as CollectionType | null,
 });
