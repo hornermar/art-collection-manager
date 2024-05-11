@@ -10,7 +10,7 @@ const schema = {
     properties: {
         id: { type: "string", minLength: 32, maxLength: 32 },
         name: { type: "string", minLength: 3 },
-        desc: { type: "string" },
+        description: { type: "string" },
     },
     required: ["id"],
     additionalProperties: false,

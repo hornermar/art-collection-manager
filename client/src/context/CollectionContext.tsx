@@ -1,9 +1,9 @@
 import { createContext } from "react";
 
-type Collection = {
+export type Collection = {
     id: string;
     name: string;
-    desc: string;
+    description: string;
     artworkList: any[];
 };
 

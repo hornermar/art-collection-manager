@@ -10,7 +10,7 @@ const schema = {
     type: "object",
     properties: {
         name: { type: "string", minLength: 3 },
-        desc: { type: "string" },
+        description: { type: "string" },
         ownerId: {
             type: "string",
             minLength: 32,

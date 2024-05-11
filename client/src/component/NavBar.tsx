@@ -1,35 +1,38 @@
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
+import { AppBar, Box, Toolbar, Typography } from "@mui/material";
+import { Dropdown } from "./Dropdown";
+import { useNavigate } from "react-router-dom";
 
 export function NavBar() {
+    const navigate = useNavigate();
     const { userList, loggedInUser, handlerMap } = useContext(UserContext);
 
+    const handleChange = (value: any) => {
+        handlerMap.login(value);
+        value !== loggedInUser?.id && navigate("/");
+    };
+
     return (
-        <div
-            style={{
-                border: "1px solid red",
-                display: "flex",
-                width: "100%",
-                justifyContent: "space-between",
-            }}
-        >
-            <div>Art Collection Manager</div>
-            <div>
-                {userList.map((user: any) => (
-                    <button
-                        key={user.id}
-                        onClick={() => handlerMap.login(user.id)}
-                        style={{
-                            backgroundColor:
-                                loggedInUser && loggedInUser.id === user.id
-                                    ? "lightblue"
-                                    : "white",
-                        }}
+        <Box>
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{ flexGrow: 1, cursor: "pointer" }}
+                        onClick={() => navigate("/")}
                     >
-                        {user.name}
-                    </button>
-                ))}
-            </div>
-        </div>
+                        Art Collection Manager
+                    </Typography>
+
+                    <Dropdown
+                        options={userList}
+                        onChange={(value) => handleChange(value)}
+                        value={loggedInUser?.name}
+                    />
+                </Toolbar>
+            </AppBar>
+        </Box>
     );
 }
