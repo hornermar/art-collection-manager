@@ -1,6 +1,4 @@
-import { Box, Button, IconButton, Stack, Tooltip } from "@mui/material";
-import EditNoteIcon from "@mui/icons-material/EditNote";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Button, Tooltip } from "@mui/material";
 import { CollectionDialog } from "./Dialog";
 import { useSwitch } from "../../hooks/useSwitch";
 import { CollectionType } from "../../context/CollectionContext";
@@ -19,14 +17,7 @@ export const CollectionListButtons = ({
         ? Object.keys(collection.artworkList).length
         : 0;
     return (
-        <Stack
-            flexDirection="row"
-            justifyContent="space-between"
-            sx={{
-                width: "100%",
-                border: "1px solid #e60000",
-            }}
-        >
+        <>
             <Button
                 onClick={onOpenForm}
                 sx={{ width: "50%", borderRight: "1px solid #e60000" }}
@@ -62,6 +53,6 @@ export const CollectionListButtons = ({
                 collection={collection}
                 onSubmit={actions.handleUpdate}
             />
-        </Stack>
+        </>
     );
 };

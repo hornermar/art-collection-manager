@@ -37,6 +37,9 @@ export const CollectionTable = ({ collection }: CollectionTableProps) => {
                             pageSize: 8,
                         },
                     },
+                    sorting: {
+                        sortModel: [{ field: "inventoryNumber", sort: "asc" }],
+                    },
                 }}
                 pageSizeOptions={[5]}
                 disableRowSelectionOnClick

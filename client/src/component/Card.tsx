@@ -1,10 +1,9 @@
 import React from "react";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Stack } from "@mui/material";
 
 type CardProps = {
     title: string;
     onClick?: () => void;
-
     buttons?: React.ReactNode;
 };
 
@@ -40,7 +39,18 @@ export const Card = ({ title, onClick, buttons }: CardProps) => {
                 {title}
             </Typography>
 
-            {buttons && buttons}
+            {buttons && (
+                <Stack
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    sx={{
+                        width: "100%",
+                        borderTop: "1px solid #e60000",
+                    }}
+                >
+                    {buttons}
+                </Stack>
+            )}
         </Box>
     );
 };

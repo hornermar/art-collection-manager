@@ -31,7 +31,8 @@ export const TextFieldForm = ({
             multiline={multiline}
             rows={rows}
             fullWidth={fullWidth}
-            sx={{ marginBottom: 2, ...sx }}
+            sx={{ paddingBottom: 2, ...sx }}
+            helperText={meta.touched && meta.error ? meta.error : ""}
         />
     );
 };

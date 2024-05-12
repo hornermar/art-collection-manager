@@ -50,6 +50,16 @@ export const useColumns = () => {
                 width: 110,
             },
             {
+                field: "medium",
+                headerName: "Medium",
+                width: 150,
+            },
+            {
+                field: "location",
+                headerName: "Location",
+                width: 150,
+            },
+            {
                 field: "actions",
                 type: "actions",
                 width: 80,

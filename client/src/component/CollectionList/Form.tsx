@@ -35,6 +35,18 @@ export const CollectionListForm = ({
                     ownerId: loggedInUser.id,
                     id: collection?.id || undefined,
                 }}
+                validate={(values) => {
+                    const errors: Partial<CollectionType> = {};
+                    if (values.name.length === 0) {
+                        errors.name = "Name is required";
+                    }
+
+                    if (values.description.length < 3) {
+                        errors.description =
+                            "Description must be at least 3 characters";
+                    }
+                    return errors;
+                }}
                 onSubmit={(values: CollectionType) => {
                     handleSubmit(values);
                 }}
@@ -48,7 +60,7 @@ export const CollectionListForm = ({
                     />
                     <TextFieldForm
                         name="description"
-                        label="Name"
+                        label="Description"
                         type="text"
                         multiline
                         rows={4}

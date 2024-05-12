@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { CollectionListContext } from "../../context/CollectionListContext";
 import { useNavigate } from "react-router-dom";
 import { useSwitch } from "../../hooks/useSwitch";
@@ -6,7 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Card } from "../Card";
 import { Title } from "../Title";
 import { CollectionDialog } from "./Dialog";
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { CollectionListButtons } from "./Buttons";
 
 export function CollectionList() {
@@ -45,7 +45,22 @@ export function CollectionList() {
                     );
                 })}
 
-                <Card title="Add collection" onClick={onOpenForm} />
+                <Box
+                    onClick={onOpenForm}
+                    sx={{
+                        width: "180px",
+                        backgroundColor: "#e60000",
+                        cursor: "pointer",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        ".MuiSvgIcon-root": {
+                            color: "#ffffff !important",
+                        },
+                    }}
+                >
+                    <AddIcon fontSize="large" />
+                </Box>
             </Stack>
 
             <CollectionDialog

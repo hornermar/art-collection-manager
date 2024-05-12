@@ -1,4 +1,4 @@
-import { Button, Divider, Stack } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import { Formik, Form } from "formik";
 import { ArtworkType } from "../../context/ArtworkContext";
 import { TextFieldForm } from "../TextFieldForm";

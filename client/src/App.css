@@ -78,3 +78,8 @@ body {
 .MuiInputBase-input .MuiOutlinedInput-input .Mui-disabled {
     color: #df9a9a !important;
 }
+
+.MuiFormHelperText-root {
+    color: black !important;
+    margin-left: 0 !important;
+}
