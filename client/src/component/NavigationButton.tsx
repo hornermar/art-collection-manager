@@ -12,16 +12,20 @@ export const NavigationButton = ({ to, title }: NavigationButtonProps) => {
     return (
         <Stack
             flexDirection="row"
-            sx={{ marginBottom: "20px", alignItems: "center" }}
+            sx={{
+                marginBottom: "20px",
+                alignItems: "center",
+                cursor: "pointer",
+            }}
+            onClick={() => navigate(to)}
         >
-            <IconButton
-                aria-label="back"
-                onClick={() => navigate(to)}
-                sx={{ marginRight: "5px" }}
+            <ArrowBackIcon sx={{ marginRight: "5px" }} />
+
+            <Typography
+                variant="subtitle1"
+                component="span"
+                sx={{ textDecoration: "underline" }}
             >
-                <ArrowBackIcon />
-            </IconButton>
-            <Typography variant="subtitle1" component="span">
                 {title}
             </Typography>
         </Stack>

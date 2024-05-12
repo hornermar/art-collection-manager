@@ -15,12 +15,23 @@ export function NavBar() {
 
     return (
         <Box>
-            <AppBar position="static">
-                <Toolbar>
+            <AppBar
+                position="static"
+                color="secondary"
+                sx={{ boxShadow: "none !important" }}
+            >
+                <Toolbar
+                    sx={{
+                        padding: "10px 20px",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        flexDirection: "row",
+                    }}
+                >
                     <Typography
-                        variant="h6"
+                        variant="h3"
                         component="div"
-                        sx={{ flexGrow: 1, cursor: "pointer" }}
+                        sx={{ cursor: "pointer" }}
                         onClick={() => navigate("/")}
                     >
                         Art Collection Manager

@@ -55,11 +55,13 @@ export const CollectionListForm = ({
                         fullWidth
                     />
 
-                    <Button variant="contained" type="submit">
+                    <Button
+                        variant="contained"
+                        type="submit"
+                        sx={{ float: "right" }}
+                    >
                         {collection?.id ? "Update" : "Create"}
                     </Button>
-
-                    <Button onClick={onClose}>Close</Button>
                 </Form>
             </Formik>
         </>

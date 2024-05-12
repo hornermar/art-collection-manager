@@ -2,7 +2,6 @@ import { Box, Button } from "@mui/material";
 import { CollectionType } from "../../context/CollectionContext";
 import { DataGrid } from "@mui/x-data-grid";
 import { useColumns } from "./Columns";
-import { useNavigate } from "react-router-dom";
 import { ArtworkListContext } from "../../context/ArtworkListContext";
 import { useContext } from "react";
 
@@ -12,7 +11,6 @@ type CollectionTableProps = {
 
 export const CollectionTable = ({ collection }: CollectionTableProps) => {
     const { handlerMap, artworkList } = useContext(ArtworkListContext);
-    const navigate = useNavigate();
 
     const columns = useColumns();
 
@@ -23,19 +21,20 @@ export const CollectionTable = ({ collection }: CollectionTableProps) => {
     };
 
     return (
-        <Box sx={{ height: 600, width: "100%" }}>
-            <Box sx={{ marginBottom: "20px" }}>
+        <Box sx={{ width: "100%" }}>
+            <Box sx={{ margin: "30px 0" }}>
                 <Button variant="contained" onClick={() => createArtwork()}>
                     Add new artwork
                 </Button>
             </Box>
             <DataGrid
+                sx={{ minHeight: "213px" }}
                 rows={artworkList}
                 columns={columns}
                 initialState={{
                     pagination: {
                         paginationModel: {
-                            pageSize: 10,
+                            pageSize: 8,
                         },
                     },
                 }}

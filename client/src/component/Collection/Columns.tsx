@@ -64,12 +64,6 @@ export const useColumns = () => {
                         label="Delete"
                         onClick={deleteArtwork(params.row.id)}
                     />,
-                    // <GridActionsCellItem
-                    //   icon={<FileCopyIcon />}
-                    //   label="Duplicate User"
-                    //   onClick={duplicateUser(params.id)}
-                    //   showInMenu
-                    // />,
                 ],
             },
         ] as GridColDef[];

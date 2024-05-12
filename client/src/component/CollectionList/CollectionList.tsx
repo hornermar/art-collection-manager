@@ -24,7 +24,7 @@ export function CollectionList() {
             <Stack
                 flexDirection="row"
                 gap={4}
-                sx={{ marginTop: "80px" }}
+                sx={{ marginTop: "30px" }}
                 flexWrap="wrap"
             >
                 {collectionList.map((collection: any) => {
@@ -45,11 +45,7 @@ export function CollectionList() {
                     );
                 })}
 
-                <Card
-                    title="Add collection"
-                    onClick={onOpenForm}
-                    icon={<AddIcon fontSize="large" />}
-                />
+                <Card title="Add collection" onClick={onOpenForm} />
             </Stack>
 
             <CollectionDialog

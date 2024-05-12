@@ -1,4 +1,4 @@
-import { Box, IconButton, Stack, Tooltip } from "@mui/material";
+import { Box, Button, IconButton, Stack, Tooltip } from "@mui/material";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { CollectionDialog } from "./Dialog";
@@ -19,35 +19,41 @@ export const CollectionListButtons = ({
         ? Object.keys(collection.artworkList).length
         : 0;
     return (
-        <Box>
-            <Tooltip title="Edit collection">
-                <span>
-                    <IconButton size="large" onClick={onOpenForm}>
-                        <EditNoteIcon fontSize="medium" />
-                    </IconButton>
-                </span>
-            </Tooltip>
+        <Stack
+            flexDirection="row"
+            justifyContent="space-between"
+            sx={{
+                width: "100%",
+                border: "1px solid #e60000",
+            }}
+        >
+            <Button
+                onClick={onOpenForm}
+                sx={{ width: "50%", borderRight: "1px solid #e60000" }}
+            >
+                Edit
+            </Button>
 
             <Tooltip
                 title={
                     artworksCount === 0
-                        ? "Delete collection"
+                        ? ""
                         : "Collection is not empty. Delete artworks first."
                 }
             >
-                <span>
-                    <IconButton
-                        size="large"
-                        disabled={artworksCount > 0}
-                        onClick={() =>
-                            actions.handleRemove({
-                                id: collection.id,
-                            })
-                        }
-                    >
-                        <DeleteIcon fontSize="medium" />
-                    </IconButton>
-                </span>
+                <Button
+                    disabled={artworksCount > 0}
+                    onClick={() =>
+                        actions.handleRemove({
+                            id: collection.id,
+                        })
+                    }
+                    sx={{
+                        width: "50%",
+                    }}
+                >
+                    Delete
+                </Button>
             </Tooltip>
 
             <CollectionDialog
@@ -56,6 +62,6 @@ export const CollectionListButtons = ({
                 collection={collection}
                 onSubmit={actions.handleUpdate}
             />
-        </Box>
+        </Stack>
     );
 };

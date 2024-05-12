@@ -1,16 +1,14 @@
 import React from "react";
-import { Typography, Avatar, Box, Hidden } from "@mui/material";
-
-import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
+import { Typography, Box } from "@mui/material";
 
 type CardProps = {
     title: string;
     onClick?: () => void;
-    icon?: React.ReactNode;
+
     buttons?: React.ReactNode;
 };
 
-export const Card = ({ title, onClick, icon, buttons }: CardProps) => {
+export const Card = ({ title, onClick, buttons }: CardProps) => {
     return (
         <Box
             sx={{
@@ -18,39 +16,29 @@ export const Card = ({ title, onClick, icon, buttons }: CardProps) => {
                 flexDirection: "column",
                 alignItems: "center",
                 width: 180,
+                border: "1px solid #e60000",
             }}
         >
-            <Box
+            <Typography
+                variant="h5"
                 onClick={onClick ? onClick : () => {}}
                 sx={{
+                    width: 180,
+                    height: 100,
+                    paddingTop: "50px",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    textAlign: "center",
                     cursor: onClick ? "pointer" : "default",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
+                    ":hover": {
+                        backgroundColor: "#e60000",
+                        color: "#ffffff",
+                    },
                 }}
             >
-                <Avatar
-                    sx={{
-                        width: 60,
-                        height: 60,
-                        marginBottom: "20px",
-                    }}
-                >
-                    {icon ? icon : <ImageOutlinedIcon fontSize="large" />}
-                </Avatar>
-                <Typography
-                    variant="h5"
-                    sx={{
-                        width: 150,
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        textAlign: "center",
-                    }}
-                >
-                    {title}
-                </Typography>
-            </Box>
+                {title}
+            </Typography>
 
             {buttons && buttons}
         </Box>

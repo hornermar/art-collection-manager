@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { CollectionList } from "./CollectionList/CollectionList";
-import { Container, Typography } from "@mui/material";
+import { Title } from "./Title";
 
 export function Dashboard() {
     const { loggedInUser } = useContext(UserContext);
@@ -14,13 +14,11 @@ export function Dashboard() {
                 </div>
             ) : (
                 <div>
-                    <Typography variant="h3" gutterBottom>
-                        You are not logged in!
-                    </Typography>
-                    <Typography variant="h5" gutterBottom>
-                        Please log in to access your dashboard and manage your
-                        collections.
-                    </Typography>
+                    <Title
+                        title="  You are not logged in!"
+                        description="   Please log in to access your dashboard and manage your
+                        collections."
+                    />
                 </div>
             )}
         </>

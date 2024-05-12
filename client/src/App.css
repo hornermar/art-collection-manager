@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+body {
+    color: #e60000 !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.MuiButtonBase-root {
+    border-radius: 0 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.MuiButton-textPrimary:hover,
+.MuiButton-outlinedPrimary:hover {
+    background-color: #e60000 !important;
+    color: #ffffff !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.MuiToolbar-root,
+.MuiDialogTitle-root,
+.MuiList-root,
+.MuiSvgIcon-root {
+    color: #e60000 !important;
 }
 
-.App-link {
-  color: #61dafb;
+.MuiButtonBase-root {
+    box-shadow: none !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MuiDataGrid-cell .MuiButtonBase-root:hover {
+    background-color: transparent !important;
+}
+
+.MuiButtonBase-root.Mui-disabled {
+    color: #df9a9a !important;
+}
+
+.MuiDataGrid-root {
+    border-radius: 0 !important;
+    border-top: none !important;
+    border-bottom: 1px solid #e60000 !important;
+    border-left: none !important;
+    border-right: none !important;
+    color: #e60000 !important;
+}
+
+.MuiDataGrid-topContainer::after {
+    background-color: #e60000 !important;
+    height: 2px !important;
+}
+
+.MuiDataGrid-cell {
+    border: none !important;
+    border-bottom: 1px solid #e60000 !important;
+}
+
+.MuiDataGrid-footerContainer {
+    border: none !important;
+}
+
+.MuiFormControl-root label {
+    color: #e60000 !important;
+}
+
+.MuiInputBase-root {
+    border-radius: 0 !important;
+    color: #e60000 !important;
+}
+
+.MuiInputBase-root fieldset {
+    border-color: #e60000 !important;
+}
+
+.MuiFormControl-root .Mui-disabled {
+    color: #df9a9a !important;
+}
+
+.MuiInputBase-root.Mui-disabled fieldset input {
+    border-color: #df9a9a !important;
+}
+
+.MuiInputBase-input .MuiOutlinedInput-input .Mui-disabled {
+    color: #df9a9a !important;
 }

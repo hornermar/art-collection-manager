@@ -36,6 +36,7 @@ export const ArtworkForm = ({ artwork }: ArtworkFormProps) => {
                     acquisitionDate: artwork?.acquisitionDate || "",
                     acquisitionType: artwork?.acquisitionType || "",
                     location: artwork?.location || "",
+                    collectionId: artwork?.collectionId,
                 }}
                 onSubmit={(values: ArtworkType) => {
                     handleSubmit(values);
@@ -43,19 +44,23 @@ export const ArtworkForm = ({ artwork }: ArtworkFormProps) => {
                 }}
             >
                 <Form>
-                    <Stack flexDirection="row" gap={2}>
+                    <Stack
+                        flexDirection="row"
+                        gap={2}
+                        sx={{ marginBottom: "60px" }}
+                    >
                         <TextFieldForm
                             name="inventoryNumber"
                             label="Inventory No."
                             type="number"
-                            // disabled
+                            disabled
                             sx={{ width: "25%" }}
                         />
                         <TextFieldForm
                             name="incrementalNumber"
                             label="Incremental No."
                             type="text"
-                            // disabled
+                            disabled
                             sx={{ width: "25%" }}
                         />
                         <TextFieldForm
@@ -66,8 +71,6 @@ export const ArtworkForm = ({ artwork }: ArtworkFormProps) => {
                             sx={{ width: "50%" }}
                         />
                     </Stack>
-
-                    <Divider sx={{ margin: "20px 0 35px 0 " }} />
 
                     <Stack flexDirection="row" gap={2}>
                         <TextFieldForm
@@ -113,9 +116,11 @@ export const ArtworkForm = ({ artwork }: ArtworkFormProps) => {
                         sx={{ width: "100%" }}
                     />
 
-                    <Divider sx={{ margin: "20px 0 35px 0 " }} />
-
-                    <Stack flexDirection="row" gap={2}>
+                    <Stack
+                        flexDirection="row"
+                        gap={2}
+                        sx={{ margin: "60px 0" }}
+                    >
                         <TextFieldForm
                             name="acquisitionDate"
                             label="Acquisition Date"
@@ -130,8 +135,6 @@ export const ArtworkForm = ({ artwork }: ArtworkFormProps) => {
                         />
                     </Stack>
 
-                    <Divider sx={{ margin: "20px 0 35px 0 " }} />
-
                     <TextFieldForm
                         name="location"
                         label="Location"
@@ -139,7 +142,11 @@ export const ArtworkForm = ({ artwork }: ArtworkFormProps) => {
                         sx={{ width: "100%" }}
                     />
 
-                    <Button variant="contained" type="submit">
+                    <Button
+                        variant="contained"
+                        type="submit"
+                        sx={{ marginTop: "20px", float: "right" }}
+                    >
                         Save
                     </Button>
                 </Form>

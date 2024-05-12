@@ -27,7 +27,7 @@ export const Dropdown = ({ options, onChange, value }: DropdownProps) => {
 
     return (
         <div>
-            <Button color="inherit" onClick={handleClick}>
+            <Button variant="outlined" onClick={handleClick}>
                 {value ? value : "Login"}
             </Button>
             <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
