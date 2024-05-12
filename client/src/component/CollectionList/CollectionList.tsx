@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { CollectionListContext } from "../../context/CollectionListContext";
 import { useNavigate } from "react-router-dom";
 import { useSwitch } from "../../hooks/useSwitch";
-import { Stack } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { Card } from "../Card";
 import { Title } from "../Title";
 import { CollectionDialog } from "./Dialog";
+import { Stack } from "@mui/material";
+import { CollectionListButtons } from "./Buttons";
 
 export function CollectionList() {
     const { collectionList, handlerMap } = useContext(CollectionListContext);
@@ -20,19 +21,26 @@ export function CollectionList() {
                 description="Choose the collection you want to manage"
             />
 
-            <Stack flexDirection="row" gap={3} sx={{ marginTop: "80px" }}>
+            <Stack
+                flexDirection="row"
+                gap={4}
+                sx={{ marginTop: "80px" }}
+                flexWrap="wrap"
+            >
                 {collectionList.map((collection: any) => {
-                    const artworksCount = collection.artworkList
-                        ? Object.keys(collection.artworkList).length
-                        : 0;
-
                     return (
                         <Card
                             onClick={() =>
                                 navigate("/collection?id=" + collection.id)
                             }
-                            title={`${collection.name} (${artworksCount})`}
+                            title={`${collection.name}`}
                             key={collection.id}
+                            buttons={
+                                <CollectionListButtons
+                                    actions={handlerMap}
+                                    collection={collection}
+                                />
+                            }
                         />
                     );
                 })}

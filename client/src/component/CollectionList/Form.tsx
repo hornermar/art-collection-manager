@@ -48,7 +48,7 @@ export const CollectionListForm = ({
                     />
                     <TextFieldForm
                         name="description"
-                        label="Dame"
+                        label="Name"
                         type="text"
                         multiline
                         rows={4}

@@ -70,14 +70,7 @@ export function CollectionListProvider({
         const responseJson = await response.json();
 
         if (response.status < 400) {
-            setCollectionLoadObject((current) => {
-                current.data.push(responseJson);
-                current.data.sort(
-                    (a: any, b: any) =>
-                        new Date(a.date).getTime() - new Date(b.date).getTime()
-                );
-                return { state: "ready", data: current.data };
-            });
+            handleLoad();
             return responseJson;
         } else {
             setCollectionLoadObject((current) => {
@@ -107,9 +100,7 @@ export function CollectionListProvider({
         const responseJson = await response.json();
 
         if (response.status < 400) {
-            setCollectionLoadObject((current) => {
-                return { state: "ready", data: current.data };
-            });
+            handleLoad();
             return responseJson;
         } else {
             setCollectionLoadObject((current) => ({
@@ -137,17 +128,7 @@ export function CollectionListProvider({
         const responseJson = await response.json();
 
         if (response.status < 400) {
-            setCollectionLoadObject((current) => {
-                const collectionIndex = current.data.findIndex(
-                    (e: any) => e.id === responseJson.id
-                );
-                current.data[collectionIndex] = responseJson;
-                current.data.sort(
-                    (a: any, b: any) =>
-                        new Date(a.date).getTime() - new Date(b.date).getTime()
-                );
-                return { state: "ready", data: current.data };
-            });
+            handleLoad();
             return responseJson;
         } else {
             setCollectionLoadObject((current) => ({

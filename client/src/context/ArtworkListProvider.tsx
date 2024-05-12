@@ -22,7 +22,7 @@ export function ArtworkListProvider({ children }: ArtworkListProviderProps) {
     const { collection } = useContext(CollectionContext);
 
     useEffect(() => {
-        handleLoad();
+        collection && handleLoad();
     }, [collection]);
 
     async function handleLoad() {
