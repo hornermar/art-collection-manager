@@ -47,7 +47,7 @@ export const ArtworkForm = ({ artwork }: ArtworkFormProps) => {
                     <Stack
                         flexDirection="row"
                         gap={2}
-                        sx={{ marginBottom: "60px" }}
+                        sx={{ marginBottom: "50px" }}
                     >
                         <TextFieldForm
                             name="inventoryNumber"
@@ -119,7 +119,7 @@ export const ArtworkForm = ({ artwork }: ArtworkFormProps) => {
                     <Stack
                         flexDirection="row"
                         gap={2}
-                        sx={{ margin: "60px 0" }}
+                        sx={{ margin: "50px 0" }}
                     >
                         <TextFieldForm
                             name="acquisitionDate"

@@ -20,6 +20,7 @@ const schema = {
         acquisitionDate: { type: "string" },
         acquisitionType: { type: "string" },
         location: { type: "string" },
+        collectionId: { type: "string", minLength: 32, maxLength: 32 },
     },
     required: ["id"],
     additionalProperties: false,

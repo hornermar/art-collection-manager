@@ -43,12 +43,11 @@ async function CreateAbl(req, res) {
 
         const artworkList = artworkDao.list(artwork.collectionId);
 
+        const inventoryNumbers = artworkList
+            .map((artwork) => artwork.inventoryNumber)
+            .filter(Number);
         const inventoryNumber =
-            Math.max(
-                ...artworkList
-                    .map((artwork) => artwork.inventoryNumber)
-                    .filter(Number)
-            ) + 1;
+            inventoryNumbers.length > 0 ? Math.max(...inventoryNumbers) + 1 : 1;
 
         const incrementalNumbers = artworkList.map(
             (artwork) => artwork.incrementalNumber

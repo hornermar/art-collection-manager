@@ -3,7 +3,7 @@ import { CollectionListContext } from "../../context/CollectionListContext";
 import { useNavigate } from "react-router-dom";
 import { useSwitch } from "../../hooks/useSwitch";
 import AddIcon from "@mui/icons-material/Add";
-import { Card } from "../Card";
+import { CollectionCard } from "./Card";
 import { Title } from "../Title";
 import { CollectionDialog } from "./Dialog";
 import { Box, Stack } from "@mui/material";
@@ -29,7 +29,7 @@ export function CollectionList() {
             >
                 {collectionList.map((collection: any) => {
                     return (
-                        <Card
+                        <CollectionCard
                             onClick={() =>
                                 navigate("/collection?id=" + collection.id)
                             }
@@ -48,6 +48,7 @@ export function CollectionList() {
                 <Box
                     onClick={onOpenForm}
                     sx={{
+                        height: "190px",
                         width: "180px",
                         backgroundColor: "#e60000",
                         cursor: "pointer",

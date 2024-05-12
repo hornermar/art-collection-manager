@@ -32,19 +32,21 @@ export const CollectionListButtons = ({
                         : "Collection is not empty. Delete artworks first."
                 }
             >
-                <Button
-                    disabled={artworksCount > 0}
-                    onClick={() =>
-                        actions.handleRemove({
-                            id: collection.id,
-                        })
-                    }
-                    sx={{
-                        width: "50%",
-                    }}
-                >
-                    Delete
-                </Button>
+                <span>
+                    <Button
+                        disabled={artworksCount > 0}
+                        onClick={() =>
+                            actions.handleRemove({
+                                id: collection.id,
+                            })
+                        }
+                        sx={{
+                            width: "50%",
+                        }}
+                    >
+                        Delete
+                    </Button>
+                </span>
             </Tooltip>
 
             <CollectionDialog

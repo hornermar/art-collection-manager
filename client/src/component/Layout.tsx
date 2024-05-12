@@ -11,7 +11,18 @@ export function Layout() {
                 <Outlet />
             </Container>
 
-            <Stack>© Markéta Hájek</Stack>
+            <Stack
+                flexDirection="row-reverse"
+                alignItems="center"
+                sx={{
+                    backgroundColor: "#e60000",
+                    color: "#ffffff",
+                    marginTop: "30px",
+                    padding: "5px 10px",
+                }}
+            >
+                © Markéta Hájková
+            </Stack>
         </Stack>
     );
 }

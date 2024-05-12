@@ -1,13 +1,17 @@
 import React from "react";
 import { Typography, Box, Stack } from "@mui/material";
 
-type CardProps = {
+type CollectionCardProps = {
     title: string;
     onClick?: () => void;
     buttons?: React.ReactNode;
 };
 
-export const Card = ({ title, onClick, buttons }: CardProps) => {
+export const CollectionCard = ({
+    title,
+    onClick,
+    buttons,
+}: CollectionCardProps) => {
     return (
         <Box
             sx={{

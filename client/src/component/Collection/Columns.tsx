@@ -27,7 +27,7 @@ export const useColumns = () => {
                 field: "inventoryNumber",
                 headerName: "Inventory No.",
                 type: "number",
-                width: 150,
+                width: 130,
             },
             {
                 field: "incrementalNumber",
@@ -37,7 +37,7 @@ export const useColumns = () => {
             {
                 field: "title",
                 headerName: "Title",
-                width: 150,
+                width: 200,
             },
             {
                 field: "author",
@@ -52,7 +52,7 @@ export const useColumns = () => {
             {
                 field: "medium",
                 headerName: "Medium",
-                width: 150,
+                width: 120,
             },
             {
                 field: "location",
