@@ -38,7 +38,7 @@ export const CollectionTable = ({ collection }: CollectionTableProps) => {
                         },
                     },
                     sorting: {
-                        sortModel: [{ field: "inventoryNumber", sort: "asc" }],
+                        sortModel: [{ field: "inventoryNumber", sort: "desc" }],
                     },
                 }}
                 pageSizeOptions={[5]}
